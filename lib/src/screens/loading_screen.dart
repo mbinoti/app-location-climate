@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'location_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:appclimatempo/services/weather.dart';
+import 'package:appclimatempo/src/model/weather_model.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -11,6 +11,8 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  final WeatherModel weatherModel = WeatherModel();
+
   @override
   void initState() {
     super.initState();
@@ -18,18 +20,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocationData() async {
-    var weatherData = await WeatherModel().getLocationWeather();
+    var weatherData = await weatherModel.getLocationWeather();
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return LocationScreen(
-        locationWeather: weatherData,
-      );
+      return LocationScreen(locationWeather: weatherData);
     }));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: SpinKitDoubleBounce(
           color: Colors.white,

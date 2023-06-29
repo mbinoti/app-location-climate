@@ -1,20 +1,23 @@
-import 'package:appclimatempo/services/location.dart';
-import 'package:appclimatempo/services/networking.dart';
+import 'package:appclimatempo/src/features/locations/data/weather_data.dart';
+import 'package:appclimatempo/src/services/location.dart';
+import 'package:appclimatempo/src/services/networking.dart';
+import 'package:flutter/material.dart';
 
 const openWeatherMapURL = 'https://api.openweathermap.org/data/2.5/weather';
 const apiKey = '8608dd13ffbf3f5350e4cc7c0b9ad282';
 
 class WeatherModel {
-  Future<dynamic> getCityWeather(String cityName) async {
+  final weatherNotifier = ValueNotifier<WeatherData?>(null);
+
+  Future<void> getCityWeather(String cityName) async {
     NetworkHelper networkHelper = NetworkHelper(
         '$openWeatherMapURL?q=$cityName&appid=$apiKey&units=metric');
-    print(
-        '>>>>>>>>>>>>>>>> $openWeatherMapURL?q=$cityName&appid=$apiKey&units=metric');
+    // print('$openWeatherMapURL?q=$cityName&appid=$apiKey&units=metric');
     var weatherData = await networkHelper.getData();
-    return weatherData;
+    updateUI(weatherData);
   }
 
-  Future<dynamic> getLocationWeather() async {
+  Future<void> getLocationWeather() async {
     Location location = Location();
     await location.getCurrentLocation();
 
@@ -22,11 +25,8 @@ class WeatherModel {
       '$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric',
     );
 
-//https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=8608dd13ffbf3f5350e4cc7c0b9ad282
-//https://api.openweathermap.org/data/2.5/weather?lat=null&lon=null&appid=8608dd13ffbf3f5350e4cc7c0b9ad282&units=metric
-
     var weatherData = await networkHelper.getData();
-    return weatherData;
+    updateUI(weatherData);
   }
 
   String getWeatherIcon(int condition) {
@@ -58,6 +58,31 @@ class WeatherModel {
       return 'You\'ll need 🧣 and 🧤';
     } else {
       return 'Bring a 🧥 just in case';
+    }
+  }
+
+  void updateUI(dynamic weatherData) {
+    if (weatherData == null) {
+      weatherNotifier.value = WeatherData(
+        temperature: 0,
+        weatherIcon: 'Error',
+        weatherMessage: 'Unable to get weather data',
+        cityName: '',
+      );
+    } else {
+      double temp = weatherData['main']['temp'];
+      int temperature = temp.toInt();
+      var condition = weatherData['weather'][0]['id'];
+      String weatherIcon = getWeatherIcon(condition);
+      String weatherMessage = getMessage(temperature);
+      String cityName = weatherData['name'];
+
+      weatherNotifier.value = WeatherData(
+        temperature: temperature,
+        weatherIcon: weatherIcon,
+        weatherMessage: weatherMessage,
+        cityName: cityName,
+      );
     }
   }
 }

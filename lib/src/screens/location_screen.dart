@@ -1,6 +1,6 @@
-import 'package:appclimatempo/services/weather.dart';
+import 'package:appclimatempo/src/model/weather_model.dart';
 import 'package:flutter/material.dart';
-import 'package:appclimatempo/utilities/constants.dart';
+import 'package:appclimatempo/src/utils/constants.dart';
 // import 'package:appclimatempo/services/weather.dart';
 import 'city_screen.dart';
 
@@ -27,7 +27,7 @@ class _LocationScreenState extends State<LocationScreen> {
     updateUI(widget.locationWeather);
   }
 
-  void updateUI(dynamic weatherData) {
+  void updatkeUI(dynamic weatherData) {
     setState(() {
       if (weatherData == null) {
         temperature = 0;

@@ -1,4 +1,4 @@
-import 'package:appclimatempo/screens/loading_screen.dart';
+import 'package:appclimatempo/src/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
