@@ -2,13 +2,14 @@ import 'package:appclimatempo/services/location.dart';
 import 'package:appclimatempo/services/networking.dart';
 
 const openWeatherMapURL = 'https://api.openweathermap.org/data/2.5/weather';
-const apiKey = 'e72ca729af228beabd5d20e3b7749713';
+const apiKey = '8608dd13ffbf3f5350e4cc7c0b9ad282';
 
 class WeatherModel {
   Future<dynamic> getCityWeather(String cityName) async {
     NetworkHelper networkHelper = NetworkHelper(
         '$openWeatherMapURL?q=$cityName&appid=$apiKey&units=metric');
-
+    print(
+        '>>>>>>>>>>>>>>>> $openWeatherMapURL?q=$cityName&appid=$apiKey&units=metric');
     var weatherData = await networkHelper.getData();
     return weatherData;
   }
@@ -18,7 +19,11 @@ class WeatherModel {
     await location.getCurrentLocation();
 
     NetworkHelper networkHelper = NetworkHelper(
-        '$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
+      '$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric',
+    );
+
+//https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=8608dd13ffbf3f5350e4cc7c0b9ad282
+//https://api.openweathermap.org/data/2.5/weather?lat=null&lon=null&appid=8608dd13ffbf3f5350e4cc7c0b9ad282&units=metric
 
     var weatherData = await networkHelper.getData();
     return weatherData;
