@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:appclimatempo/src/features/weather/domain/weather_model.dart';
 import 'package:appclimatempo/src/features/weather/presentation/controllers/weather_controller.dart';
 
@@ -67,6 +69,8 @@ class _LocationScreenState extends State<LocationScreen> {
                         if (typedName != null) {
                           await widget.weatherController
                               .fetchCityWeather(typedName);
+                          if (widget
+                              .weatherController.value!.weatherIcon.isEmpty) {}
                         }
                       },
                       child: const Icon(Icons.location_city, size: 40.0),
