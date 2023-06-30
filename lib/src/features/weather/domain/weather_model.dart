@@ -1,10 +1,10 @@
-class WeatherData {
+class WeatherModel {
   final int temperature;
   final String weatherIcon;
   final String weatherMessage;
   final String cityName;
 
-  WeatherData({
+  WeatherModel({
     required this.temperature,
     required this.weatherIcon,
     required this.weatherMessage,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:appclimatempo/src/utils/constants.dart';
+import 'package:appclimatempo/src/constants/constants.dart';
 
 class CityScreen extends StatefulWidget {
   @override

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+const openWeatherMapURL = 'https://api.openweathermap.org/data/2.5/weather';
+const apiKey = '8608dd13ffbf3f5350e4cc7c0b9ad282';
+
 const kTempTextStyle = TextStyle(
   fontFamily: 'Spartan MB',
   fontSize: 10.0,
