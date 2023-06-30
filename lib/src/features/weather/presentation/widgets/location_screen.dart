@@ -4,7 +4,7 @@ import 'package:appclimatempo/src/features/weather/presentation/controllers/weat
 import 'package:flutter/material.dart';
 import 'package:appclimatempo/src/constants/constants.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-// import 'package:appclimatempo/services/weather.dart';
+
 import 'city_screen.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -25,6 +25,7 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   void initState() {
     super.initState();
+    widget.weatherController.fetchLocationWeather();
   }
 
   @override
@@ -59,7 +60,9 @@ class _LocationScreenState extends State<LocationScreen> {
                       onPressed: () async {
                         var typedName = await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => CityScreen()),
+                          MaterialPageRoute(
+                            builder: (context) => CityScreen(),
+                          ),
                         );
                         if (typedName != null) {
                           await widget.weatherController

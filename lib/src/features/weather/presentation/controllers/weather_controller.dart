@@ -3,7 +3,6 @@ import 'package:appclimatempo/src/features/weather/domain/weather_model.dart';
 import 'package:appclimatempo/src/location/location.dart';
 import 'package:appclimatempo/src/location/networking.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class WeatherController extends ValueNotifier<WeatherModel?> {
   WeatherController(WeatherModel? value) : super(value);

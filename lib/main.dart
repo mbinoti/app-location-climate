@@ -1,4 +1,4 @@
-import 'package:appclimatempo/src/features/weather/presentation/widgets/loading_screen.dart';
+import 'package:appclimatempo/src/features/weather/presentation/widgets/location_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'src/features/weather/presentation/controllers/weather_controller.dart';
@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: LoadingScreen(weatherController: weatherController),
+      home: LocationScreen(
+        weatherController: weatherController,
+      ),
     );
   }
 }
