@@ -1,8 +1,8 @@
 # app climatempo
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/6609513/245206812-4dbaf28e-19ad-4a47-acc9-29a053b758d7.jpg" width="350">
-  <img src="https://user-images.githubusercontent.com/6609513/245207382-faa2891e-64ef-4b12-b470-72106d913235.jpg" width="350">
+  <img src="https://user-images.githubusercontent.com/6609513/252606269-a990c082-1eb7-42f7-981b-b0589c776300.jpg" width="350">
+  <img src="https://user-images.githubusercontent.com/6609513/252606612-0f9125ba-50ad-4758-9d87-df6689701507.jpg" width="350">
 
 </p>
 
