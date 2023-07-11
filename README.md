@@ -1,4 +1,4 @@
-# app climatempo
+# app de localização e clima.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/6609513/252606269-a990c082-1eb7-42f7-981b-b0589c776300.jpg" width="350">
