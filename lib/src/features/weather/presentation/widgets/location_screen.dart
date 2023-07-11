@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:appclimatempo/src/features/weather/domain/weather_model.dart';
 import 'package:appclimatempo/src/features/weather/presentation/controllers/weather_controller.dart';
 
